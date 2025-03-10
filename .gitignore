@@ -1,2 +1,5 @@
 Build/
 x64/
+out/
+.vs/
+.gitconfig
