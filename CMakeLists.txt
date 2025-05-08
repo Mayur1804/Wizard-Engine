@@ -12,7 +12,11 @@ set(SRC_DIR ${PROJECT_ROOT}/src)
 
 # Add executable
 file(GLOB SRC_FILES "${SRC_DIR}/*.cpp")
-add_executable(WizardEngine ${SRC_FILES} "${LIBRARIES_DIR}/src/glad.c")
+add_executable(WizardEngine ${SRC_FILES} "${LIBRARIES_DIR}/src/glad.c"  
+		"Include/config.h" 
+		"src/triangle_mesh.h"
+		"src/triangle_mesh.cpp"
+)
 
 # Include directories
 target_include_directories(WizardEngine PRIVATE "${LIBRARIES_DIR}/include")
@@ -23,3 +27,6 @@ target_link_libraries(WizardEngine PRIVATE "${LIBRARIES_DIR}/lib/glfw3.lib")
 # Link OpenGL
 find_package(OpenGL REQUIRED)
 target_link_libraries(WizardEngine PRIVATE OpenGL::GL)
+
+
+file(COPY ${CMAKE_SOURCE_DIR}/Shaders DESTINATION ${CMAKE_BINARY_DIR})
